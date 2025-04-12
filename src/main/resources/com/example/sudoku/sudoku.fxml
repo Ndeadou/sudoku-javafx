@@ -14,9 +14,9 @@
 
 <StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.controller.SudokuController">
    <children>
-      <VBox prefHeight="553.0" prefWidth="391.0" style="-fx-background-color: white;">
+      <VBox prefHeight="508.0" prefWidth="908.0" style="-fx-background-color: #C3CEDA;">
          <children>
-            <GridPane fx:id="gameGrid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0">
+            <GridPane fx:id="gameGrid" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #0C4160;" translateX="40.0" translateY="60.0" vgap="5.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,25 +33,26 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </GridPane>
-            <Button alignment="CENTER" maxWidth="100.0" mnemonicParsing="false" onAction="#onHelpClick" style="-fx-background-color: gray;" text="Ayuda">
+            <Button alignment="CENTER" maxWidth="283.0" mnemonicParsing="false" onAction="#onHelpClick" prefHeight="74.0" prefWidth="283.0" style="-fx-background-color: #0C4160;" text="AYUDA" textFill="WHITE" translateX="520.0" translateY="-250.0">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
                <font>
-                  <Font name="Arial Black" size="13.0" />
+                  <Font name="Ebrima" size="36.0" />
                </font>
             </Button>
-            <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#onNewGameClick" style="-fx-background-color: gray;" text="Nuevo juego">
+            <ComboBox fx:id="difficultyBox" prefHeight="25.0" prefWidth="285.0" promptText="SELECCIONA DIFICULTAD" translateX="515.0" translateY="-150.0" />
+            <Button fx:id="newGameButton" minHeight="-Infinity" mnemonicParsing="false" onAction="#onNewGameClick" prefHeight="75.0" prefWidth="286.0" style="-fx-background-color: #0C4160;" text="NUEVO JUEGO" textFill="WHITE" translateX="515.0" translateY="-150.0">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
                <font>
-                  <Font name="Arial Black" size="13.0" />
+                  <Font name="Ebrima" size="36.0" />
                </font>
-               <graphic>
-                  <ComboBox fx:id="difficultyBox" prefWidth="150.0" promptText="Selecciona dificultad" />
-               </graphic>
             </Button>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#onInstructionsClick" prefHeight="28.0" prefWidth="127.0" style="-fx-background-color: gray;" text="Instrucciones">
                <font>
@@ -62,8 +63,11 @@
                </VBox.margin>
             </Button>
          </children>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
       </VBox>
-      <ImageView fitHeight="200.0" fitWidth="200.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="153.0" fitWidth="101.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" translateX="245.0" translateY="65.0">
          <image>
             <Image url="@old-man-guy.gif" />
          </image>

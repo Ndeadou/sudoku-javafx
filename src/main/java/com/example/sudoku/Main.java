@@ -33,10 +33,11 @@ public class Main extends Application {
             stage.getIcons().add(new Image(iconUrl.toExternalForm()));
         }
 
-        stage.setMinWidth(360);
-        stage.setMinHeight(460);
-        stage.setWidth(460);
-        stage.setHeight(600);
+        stage.setMinWidth(908);
+        stage.setMinHeight(670);
+        stage.setWidth(908);
+        stage.setHeight(670);
+        stage.setResizable(false);
         stage.show();
 
         reproducirMusica();
