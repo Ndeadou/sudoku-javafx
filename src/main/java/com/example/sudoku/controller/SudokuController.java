@@ -1,3 +1,12 @@
+/**
+ * Controlador del juego Sudoku 6x6. Administra la interfaz, validación de reglas
+ * y la lógica del juego, incluyendo la generación y verificación del tablero.
+ *
+ * Desarrollado por:
+ * Miguel Ángel Descance - Código de estudiante: 2416788
+ * Erick Andrey Obando Narvaez - Código de estudiante: 2415751
+ */
+
 package com.example.sudoku.controller;
 
 import com.example.sudoku.model.SudokuGenerator;
@@ -17,6 +26,9 @@ public class SudokuController {
 
     private final TextField[][] cells = new TextField[6][6];
 
+    /**
+     * Inicializa la cuadrícula y la dificultad. Se llama automáticamente al cargar la vista.
+     */
     @FXML
     public void initialize() {
         for (int row = 0; row < 6; row++) {
@@ -40,10 +52,13 @@ public class SudokuController {
 
         if (difficultyBox != null) {
             difficultyBox.getItems().addAll("Fácil", "Medio", "Difícil");
-            difficultyBox.setValue("Medio"); // valor por defecto
+            difficultyBox.setValue("Medio");
         }
     }
 
+    /**
+     * Aplica estilo visual a una celda según si hay error o es valor inicial.
+     */
     private void aplicarEstiloCelda(TextField cell, int row, int col, boolean error, boolean esInicial) {
         String top = (row % 2 == 0) ? "2" : "1";
         String left = (col % 3 == 0) ? "2" : "1";
@@ -63,6 +78,9 @@ public class SudokuController {
         cell.setStyle(border + background + "-fx-alignment: center; -fx-font-size: 14px;");
     }
 
+    /**
+     * Valida que la entrada del usuario sea un número entre 1 y 6.
+     */
     private void validarEntrada(TextField cell) {
         String text = cell.getText();
         if (!text.matches("[1-6]?")) {
@@ -70,6 +88,9 @@ public class SudokuController {
         }
     }
 
+    /**
+     * Valida todas las celdas y muestra errores en rojo si hay reglas incumplidas.
+     */
     private void validarTablero() {
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
@@ -96,6 +117,9 @@ public class SudokuController {
         }
     }
 
+    /**
+     * Verifica si el tablero está lleno y todas las reglas se cumplen.
+     */
     private boolean tableroCompletoYValido() {
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
@@ -112,6 +136,9 @@ public class SudokuController {
         return true;
     }
 
+    /**
+     * Muestra una alerta de victoria al completar correctamente el juego.
+     */
     private void mostrarMensajeVictoria() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("¡Felicidades!");
@@ -120,6 +147,9 @@ public class SudokuController {
         alert.showAndWait();
     }
 
+    /**
+     * Verifica si un valor es válido dentro de la fila indicada.
+     */
     private boolean esValidoEnFila(int fila, int colActual, String valor) {
         for (int col = 0; col < 6; col++) {
             if (col != colActual && cells[fila][col].getText().equals(valor)) return false;
@@ -127,6 +157,9 @@ public class SudokuController {
         return true;
     }
 
+    /**
+     * Verifica si un valor es válido dentro de la columna indicada.
+     */
     private boolean esValidoEnColumna(int filaActual, int col, String valor) {
         for (int fila = 0; fila < 6; fila++) {
             if (fila != filaActual && cells[fila][col].getText().equals(valor)) return false;
@@ -134,6 +167,9 @@ public class SudokuController {
         return true;
     }
 
+    /**
+     * Verifica si un valor es válido dentro del bloque 2x3 correspondiente.
+     */
     private boolean esValidoEnBloque(int fila, int col, String valor) {
         int bloqueInicioFila = (fila / 2) * 2;
         int bloqueInicioCol = (col / 3) * 3;
@@ -145,6 +181,9 @@ public class SudokuController {
         return true;
     }
 
+    /**
+     * Acción del botón de ayuda: sugiere un número válido para una celda vacía.
+     */
     @FXML
     private void onHelpClick() {
         for (int row = 0; row < 6; row++) {
@@ -168,6 +207,9 @@ public class SudokuController {
         }
     }
 
+    /**
+     * Acción del botón "Nuevo Juego": limpia el tablero y genera un nuevo juego con dificultad seleccionada.
+     */
     @FXML
     private void onNewGameClick() {
         limpiarTablero();
@@ -204,6 +246,9 @@ public class SudokuController {
         validarTablero();
     }
 
+    /**
+     * Acción del botón "Instrucciones": muestra ventana con reglas del juego.
+     */
     @FXML
     private void onInstructionsClick() {
         String mensaje = """
@@ -233,6 +278,9 @@ public class SudokuController {
         alert.showAndWait();
     }
 
+    /**
+     * Limpia el tablero y reinicia el estilo de las celdas.
+     */
     private void limpiarTablero() {
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
@@ -243,3 +291,4 @@ public class SudokuController {
         }
     }
 }
+
